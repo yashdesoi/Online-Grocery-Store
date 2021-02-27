@@ -334,6 +334,10 @@ form.purchase > button {
     main {
         margin-top: 103px;
     }
+
+    form.purchase {
+        font-size: 10px;
+    }
 }
 
 @media (max-width: 360px) {
