@@ -233,7 +233,7 @@ searchForm.addEventListener('submit', event => {
             const category = productElement.children[0].children[0].textContent.toLowerCase();
             const name = productElement.children[1].children[0].textContent.toLowerCase();
             
-            if (name === searchedText || category === searchedText) {
+            if (name.includes(searchedText) || category === searchedText) {
                 productElement.style.display = 'inline-block';
             } else {
                 productElement.style.display = 'none';

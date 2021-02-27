@@ -14,38 +14,34 @@ body {
 header {
     background-color: yellowgreen;
     padding: 12px 15px;
-    /* box-shadow: 0 4px 15px rgba(0,0,0,0.5); */
 
     position: fixed;
     width: 100%;
     top: 0;
     left: 0;
     z-index: 1;
-}
 
-.title,
-.cart-icon {
-    display: inline-block;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .title {
     color: yellow;
-    width: max-content;
     font-family: 'Lobster', cursive;
     font-size: 45px;
+    text-align: center;
     margin: 0;
-    vertical-align: middle;
 }
 
 .cart-icon {
     background-image: url('img/cart\ icon.png');
-    background-color: rgba(0, 0, 0, 0);
+    background-color: transparent;
     border: none;
     width: 35px;
     height: 35px;
+    font-size: 12px;
     background-size: cover;
-    vertical-align: middle;
-    margin-left: calc(100% - 475px);
     cursor: pointer;
 
     position: relative;
@@ -59,9 +55,9 @@ header {
     background-color: red;
     color: white;
     font-family: 'Varela Round', sans-serif;
-    font-size: 12px;
+    font-size: 1em;
     border-radius: 5px;
-    padding: 0 5px;
+    padding: 0 0.4em;
 
     position: absolute;
     top: -2px;
@@ -74,16 +70,20 @@ main {
     padding: 15px;
 }
 
+form.search-product {
+    display: flex;
+    align-items: center;
+}
+
 form.search-product > input {
-    width: 375px;
-    margin-left: 60px;
+    width: 100%;
+    max-width: 375px;
     padding: 5px;
     border: 1px solid gray;
     border-radius: 4px;
     color: black;
     font-family: inherit;
     font-size: 20px;
-    vertical-align: middle;
 }
 
 form.search-product > input:focus {
@@ -92,9 +92,7 @@ form.search-product > input:focus {
 }
 
 .reset-icon {
-    display: inline-block;
     font-size: 25px;
-    vertical-align: middle;
     margin-left: 5px;
     color: grey;
     cursor: pointer;
@@ -103,12 +101,15 @@ form.search-product > input:focus {
 .products {
     list-style: none;
     padding: 0;
+
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
 .product {
-    display: inline-block;
-    width: 375px;
-    margin: 0 60px 40px 60px;
+    flex-basis: 350px;
+    margin: 20px 60px;
     border-radius: 10px;
     background-color: wheat;
     overflow: hidden;
@@ -186,6 +187,62 @@ form.search-product > input:focus {
 
 .not-found {
     color: black;
+}
+
+/* ----------------------- Media Query ----------------------- */
+@media (max-width: 1439px) {
+    .product {
+        margin-left: 30px;
+        margin-right: 30px;
+    }
+}
+
+@media (max-width: 849px) {
+    .product {
+        margin: 10px;
+    }
+}
+
+@media (max-width: 500px) {
+    header {
+        flex-direction: column;
+    }
+
+    .title {
+        font-size: 35px;
+    }
+
+    .cart-icon {
+        width: 30px;
+        height: 30px;
+        font-size: 10px;
+        margin-top: 5px;
+    }
+
+    main {
+        margin-top: 103px;
+    }
+}
+
+@media (max-width: 360px) {
+    .title {
+        font-size: 25px;
+    }
+
+    .cart-icon {
+        width: 25px;
+        height: 25px;
+    }
+
+    main {
+        margin-top: 85px;
+    }
+}
+
+@media (max-width: 300px) {
+    .reset-icon {
+        font-size: 20px;
+    }
 }
 
 /* ----------------------- Cart ----------------------- */
