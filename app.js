@@ -74,14 +74,46 @@ fetchData()
 
 // Toggling display of cart
 let cartOpen = false;
+
+if (window.innerWidth <= 769) {
+    cart.style.top = `-${cart.offsetHeight}px`;
+}
+
+window.addEventListener('resize', () => {
+    if (!cartOpen) {
+        if (window.innerWidth <= 769) {
+            cart.style.top = `-${cart.offsetHeight}px`;
+            cart.style.right = '0'
+        } else {
+            cart.style.top = '80px';
+            cart.style.right = '-500px'
+        }
+    } else {
+        cart.style.top = '80px';
+        cart.style.right = '0'
+    }
+});
+
 cartIcon.addEventListener('click', event => {
     event.stopPropagation();
-    if (!cartOpen) {
-        cartOpen = true;
-        cart.style.right = '0';
+    
+
+    if (window.innerWidth <= 769) {
+        if (!cartOpen) {
+            cartOpen = true;
+            cart.style.top = '80px';
+        } else {
+            cartOpen = false;
+            cart.style.top = `-${cart.offsetHeight}px`;
+        }
     } else {
-        cartOpen = false;
-        cart.style.right = '-500px';
+        if (!cartOpen) {
+            cartOpen = true;
+            cart.style.right = '0';
+        } else {
+            cartOpen = false;
+            cart.style.right = '-500px';
+        }
     }
 });
 
@@ -89,6 +121,14 @@ cartIcon.addEventListener('click', event => {
 products.addEventListener('click', event => {
     event.stopPropagation();
     if (event.target.className === 'add') {
+
+        if (window.innerWidth <= 769) {
+            if (!cartOpen) {
+                cart.style.top = `-${cart.offsetHeight * 2}px`;
+            }
+        }
+
+
         const name = event.target.previousElementSibling.children[0].textContent;
         const weight = productList[name].weight;
         const price = productList[name].price;
@@ -204,9 +244,13 @@ purchaseForm.addEventListener('keyup', event => {
 
 purchaseForm.addEventListener('submit', event => {
     event.preventDefault();
+    if (window.innerWidth <= 769) {
+        cart.style.top = `-${cart.offsetHeight}px`;
+    } else {
+        cart.style.right = '-500px';
+    }
+    checkoutFormWrapper.style.display = 'flex';
     cartOpen = false;
-    cart.style.right = '-500px';
-    checkoutFormWrapper.style.display = 'block';
 });
 
 // Searching product
@@ -274,8 +318,12 @@ checkoutFormWrapper.addEventListener('click', event => {
 
     if (event.target.className.includes('close') || event.target.className === 'checkout-form__wrapper') {
         cartOpen = true;
-        cart.style.right = '0';
         checkoutFormWrapper.style.display = 'none';
+        if (window.innerWidth <= 769) {
+            cart.style.top = `80px`;
+        } else {
+            cart.style.right = '0';
+        }
     }
 });
 
