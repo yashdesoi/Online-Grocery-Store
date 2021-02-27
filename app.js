@@ -166,7 +166,9 @@ products.addEventListener('click', event => {
                 <div class="cart__item-price">
                     &#8377;<span class="value">${price}</span>
                 </div>
-                <i class="cart__item-remove fas fa-trash-alt"></i>
+                <div class="cart__item-remove">
+                <i class="remove-icon fas fa-trash-alt"></i>
+                </div>
             `;
 
             // Adding an item to cart
@@ -191,9 +193,9 @@ products.addEventListener('click', event => {
 // Removing and item from cart
 items.addEventListener('click', event => {
     event.stopPropagation();
-    if (event.target.className.includes('cart__item-remove')) {
-        event.target.parentElement.remove();
-        const price = event.target.previousElementSibling.children[0].textContent;
+    if (event.target.className.includes('remove-icon')) {
+        event.target.parentElement.parentElement.remove();
+        const price = event.target.parentElement.previousElementSibling.children[0].textContent;
 
         // Updating number of items icon
         numberOfItems.textContent = items.children.length;
