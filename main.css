@@ -317,31 +317,30 @@ form.purchase > button {
 
     .product {
         display: flex;
+        flex-wrap: wrap;
         max-width: 600px;
         width: 100%;
     }
 
     .image {
-        flex-basis: 200px;
-        height: 100%;
+        flex-basis: 30%;
+        height: 110px;
+        border-bottom-right-radius: 10px;
     }
 
     .category {
+        font-size: 15px;
         right: auto;
         left: 0;
     }
 
     .details {
-        font-size: 15px;
-        flex-grow: 1;
-        padding-right: 0;
+        flex-basis: 70%;
+        font-size: 14px;
     }
 
-    .add {
-        align-self: center;
-        height: 100%;
-        border-bottom-left-radius: 0;
-        border-top-left-radius: 0;
+    .details > * {
+        margin: 5px 0;
     }
 }
 
