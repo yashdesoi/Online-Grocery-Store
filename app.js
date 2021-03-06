@@ -293,7 +293,7 @@ searchForm.addEventListener('submit', event => {
             const name = productElement.children[1].children[0].textContent.toLowerCase();
             
             if (name.includes(searchedText) || category === searchedText) {
-                productElement.style.display = 'inline-block';
+                productElement.style.display = 'flex';
             } else {
                 productElement.style.display = 'none';
                 notDisplayed += 1;
@@ -322,7 +322,7 @@ resetIcon.addEventListener('click', event => {
     if (num > 0) {
         const productElements = document.querySelectorAll('.products > .product');
         productElements.forEach(productElement => {
-            productElement.style.display = 'inline-block';
+            productElement.style.display = 'flex';
         });
     }
 });
